@@ -167,7 +167,7 @@ Game logic lives in `src/game/` — engine, input, audio, level layout, and spri
 
 ---
 
-## 授權 / License
+## License
 
 [MIT](LICENSE) for the code.
 

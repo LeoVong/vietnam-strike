@@ -149,6 +149,35 @@ No account, no backend. High score lives in `localStorage`.
 | Audio | Web Audio API (synthesized SFX) |
 | Physics | Custom AABB, 60 Hz fixed timestep |
 
+```mermaid
+flowchart TB
+    Player((Player))
+
+    subgraph FE["Frontend"]
+        UI["React 19 + TanStack Router"]
+        Canvas["HTML5 Canvas 2D"]
+        CSS["Tailwind CSS v4"]
+    end
+
+    subgraph BE["Backend"]
+        Engine["Custom engine"]
+        Audio["Web Audio API"]
+        Phys["AABB · 60 Hz"]
+    end
+
+    subgraph DB["Database"]
+        LS[("localStorage")]
+    end
+
+    Player -->|"keys / touch"| UI
+    UI --- CSS
+    UI -->|"input"| Engine
+    Engine -->|"draw frames"| Canvas
+    Engine --> Audio
+    Engine --> Phys
+    Engine -->|"high score"| LS
+```
+
 Game logic lives in `src/game/` — engine, input, audio, level layout, and sprite loading. The canvas is 1280×720, letterboxed to the window.
 
 ---
